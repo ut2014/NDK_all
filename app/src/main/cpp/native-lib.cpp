@@ -52,7 +52,20 @@ Java_com_it5_ndk_DataProvider_add(JNIEnv *env,jobject obj,jint x,jint y){
     return x+y;
 };
 
+//C调用java方法得到结果
+jint
+Java_com_it5_ndk_DataProvider_c2java(JNIEnv *env,jobject obj){
+    //Java中的int对应的是C语言中的long类型, 对应JNI中的jint类型, C语言中
+//    LOGI("JNI_log : x=%d , y=%d",x,y);
+    char* classname="com/it5/ndk/DataProvider";
+    //得到类的返回值
+    jclass dpclazz=env->FindClass(classname);
+    //通过类，找方法的id
+    jmethodID  mid=env->GetMethodID(dpclazz,"javaAdd","(II)I");
 
+    jint bint=env->CallIntMethod(obj, mid,3,4);
+    return bint;
+};
 }
 //java中的jstring, 转化为c的一个字符数组
 char* Jstring2str(JNIEnv *env, jstring str) {

@@ -21,4 +21,9 @@ public class DataProvider {
     //将java中的int数组传递给C语言, C语言为每个元素加10, 返回给Java
     public native int[] intMethod(int[] nums);
 
+    public native int c2java();
+
+    public int javaAdd(int x,int y){
+        return x+y;
+    }
 }

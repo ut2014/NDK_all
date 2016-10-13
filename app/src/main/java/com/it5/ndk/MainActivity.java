@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
                 int[] array={1,2,3,4,5};
                 dataProvider.intMethod(array);
                 break;
+            case R.id.add_:
+                Toast.makeText(getApplicationContext(),"the add result: "+dataProvider.c2java(),Toast.LENGTH_SHORT).show();
+                break;
             default:
                 break;
         }
